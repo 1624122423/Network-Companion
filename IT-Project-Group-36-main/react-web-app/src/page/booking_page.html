@@ -1,0 +1,67 @@
+<!DOCTYPE html>        <!-- This is an html document-->
+<html lang="en">
+<head>.         <!--Title, Style, and Encoding-->
+  <meta charset="UTF-8">
+  <title>Login</title>.     <!--Title of the page (browser tab)-->
+  <script src = "../login.js" type = "module" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;   /* default font */
+      background: #2b61b131;    /* background color */
+      display: flex;
+      height: 100vh;
+      justify-content: center;    /* Centered the login container */
+      align-items: center;
+    }
+    .login-container { /*login box*/
+      background: #fff;
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .login-container h2 { /* headings */
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 92%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .login-container button { /* login button */
+      width: 100%;
+      padding: 10px;
+      background: #007BFF;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background: #0056b3;
+    }
+    .login-container p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <input id = "email" type="text" placeholder="Username" required>
+      <input id = "password" type="password" placeholder="Password" required>
+      <button id = "submit">Login</button>
+    <form>
+    <p>Don't have an account? <a href="www.example.com">Sign up</a></p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+.signup-card {
+  width: 420px;           
+  max-width: 90vw;
+}
+
+.auth-title {
+  margin: 0 0 6px 0;
+}
+
+.auth-sub {
+  margin: 0 0 18px 0;
+  opacity: 0.8;
+}
+
+.auth-label {
+  display: block;
+  font-size: 0.92rem;
+  margin: 10px 0 6px;
+  opacity: 0.9;
+}
+
+.auth-error {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 77, 79, 0.12);
+  border: 1px solid rgba(255, 77, 79, 0.35);
+  color: #b00020;
+  font-size: 0.92rem;
+}
+

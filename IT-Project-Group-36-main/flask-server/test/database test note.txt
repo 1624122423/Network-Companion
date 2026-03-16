@@ -1,0 +1,14 @@
+in app_factory.py:
+- URI = "mongodb+srv://Desmond:Desmond@networkingcompanion.gbnniue.mongodb.net/?retryWrites=true&w=majority&appName=NetworkingCompanion"
++ MONGO_URI = getenv("MONGO_URI", "mongodb://localhost:27017/testdb")
+
+make firebase skip in CL environment:
+- cred = credentials.Certificate("./it-project-auth.json")
+- default_app = initialize_app(cred)
++ if not getenv("CI"):  # CI 环境跳过 Firebase
++     cred = credentials.Certificate("./it-project-auth.json")
++     initialize_app(cred)
+
+Connect MongoDB to new URL:
+- connect(db = 'test', host = URI)
++ connect(db='test', host=MONGO_URI)

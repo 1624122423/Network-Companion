@@ -1,0 +1,237 @@
+/* -----------------------------------
+   Calendar page: layout frame
+----------------------------------- */
+.cal-page {
+  padding: 24px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #f4f6fa;
+}
+
+/* -----------------------------------
+   Top bar (title + month + actions)
+----------------------------------- */
+.cal-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.cal-title {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 800;
+  color: #1f2a44;
+}
+.cal-month {
+  margin-top: 6px;
+  color: #6b7a90;
+  font-weight: 600;
+}
+.cal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cal-btn {
+  border: 1px solid #d9e2f1;
+  background: #f7f9fc;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.cal-btn:hover { background: #eef3fb; }
+.cal-avatar {
+  width: 36px; height: 36px; border-radius: 50%; background: #1f5bd8;
+}
+
+/* -----------------------------------
+   Scroll container
+----------------------------------- */
+.cal-scroll {
+  height: calc(100vh - 160px);
+  overflow: auto;
+  padding-right: 6px;
+}
+
+/* -----------------------------------
+   Board grid (rounded white card)
+   + force row-wise placement to avoid misflow
+----------------------------------- */
+.cal-board {
+  background: #ffffff;
+  border: 1px solid #e9eef8;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(31, 56, 88, 0.06);
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  grid-auto-flow: row;           /* important: place items by rows */
+  position: relative;
+}
+
+/* -----------------------------------
+   Sticky header (corner + weekdays)
+----------------------------------- */
+.cal-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #ffffff;
+}
+.cal-corner {
+  grid-row: 1;
+  grid-column: 1 / 2;
+  border-bottom: 1px solid #eef2fb;
+  border-right: 1px solid #eef2fb;
+  border-top-left-radius: 18px;
+
+  /* keep rail solid above events */
+  position: relative;
+  z-index: 3;
+  background: #ffffff;
+}
+.cal-dayhead {
+  grid-row: 1;                  /* keep weekday headers in first row */
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef2fb;
+  color: #344768;
+  font-weight: 700;
+}
+
+/* -----------------------------------
+   Hour rail and cells
+----------------------------------- */
+.cal-hour {
+  padding: 8px 12px;
+  color: #8392b1;
+  font-weight: 700;
+  border-right: 1px solid #eef2fb;
+  border-bottom: 1px dashed rgba(142, 161, 199, 0.25);
+
+  /* make the time rail continuous above events */
+  position: relative;
+  z-index: 3;
+  background: #ffffff;
+}
+.cal-cell {
+  border-bottom: 1px dashed rgba(142, 161, 199, 0.25);
+  border-right: 1px solid rgba(238, 242, 251, 0.9);
+}
+
+/* -----------------------------------
+   Event pill (blue, clickable)
+----------------------------------- */
+.cal-event {
+  margin: 6px 8px;
+  padding: 8px 10px;
+  background: #e8f0ff;
+  border: 1px solid #cfe0ff;
+  border-left: 4px solid #3b82f6;
+  border-radius: 12px;
+  color: #1d2b4c;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  z-index: 1;                   /* keep below time rail */
+}
+
+/* -----------------------------------
+   Event pill (blue, clickable)
+----------------------------------- */
+.cal-event-available {
+  margin: 6px 8px;
+  padding: 8px 10px;
+  background: #e8f0ff;
+  border: 1px solid #cfe0ff;
+  border-left: 4px solid #3b82f6;
+  border-radius: 12px;
+  color: #008000;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  z-index: 1;                   /* keep below time rail */
+}
+.cal-event-time { font-weight: 800; }
+.cal-event-title { font-weight: 600; opacity: 0.95; }
+.cal-event-loc { font-weight: 500; opacity: 0.85; }
+
+/* -----------------------------------
+   Overlay (no click capture)
+----------------------------------- */
+.cal-overlay {
+  pointer-events: none;
+  grid-column: 2 / 9;
+  grid-row: 1 / -1;
+}
+
+/* -----------------------------------
+   Modal (soft blue card)
+----------------------------------- */
+.cal-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 40;
+}
+.cal-modal {
+  width: 440px;
+  max-width: 92vw;
+  background: #f9fbff;
+  border: 1px solid #e6ecf7;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 14px 36px rgba(31, 56, 88, 0.18);
+}
+.cal-modal-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #1f2a44;
+}
+.cal-modal-body {
+  color: #2b3a5a;
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.cal-modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.cal-modal-confirm {
+  margin-top: 6px;
+  padding: 10px 12px;
+  background: #fff7ed;
+  border: 1px solid #fde4cf;
+  border-radius: 10px;
+  color: #7c3e0a;
+  font-weight: 600;
+}
+
+/* -----------------------------------
+   Button variants
+----------------------------------- */
+.cal-btn.danger { background: #fee2e2; border-color: #fecaca; }
+.cal-btn.danger:hover { background: #ffd9d9; }
+.cal-btn.danger.strong { background: #fecaca; border-color: #fda4a4; }
+.cal-btn.danger.strong:hover { background: #fdaaaa; }
+
+/* -----------------------------------
+   Responsive tweaks
+----------------------------------- */
+@media (max-width: 1200px) {
+  .cal-title { font-size: 32px; }
+  .cal-board { grid-template-columns: 90px repeat(7, 1fr); }
+}

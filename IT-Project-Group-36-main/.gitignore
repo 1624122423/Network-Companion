@@ -1,0 +1,5 @@
+.venv
+client
+create_db.py
+instance
+node_modules

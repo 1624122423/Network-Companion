@@ -1,0 +1,158 @@
+/* ======================================
+   Global app frame
+   - Keep these light to avoid conflicts
+====================================== */
+.App {
+  background-color: #EEE;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Search bar container used on Dashboard */
+.search-bar-container {
+  padding-top: 20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+
+/* ======================================
+   Sidebar (centered, lively look)
+   - Deep navy layered gradients
+   - Subtle inner highlights
+   - Centered brand + links
+   - Capsule hover/active
+   - Active top accent (works with centered layout)
+====================================== */
+
+/* Design tokens for the sidebar */
+:root {
+  --side-bg-1: #21306b;           /* top navy */
+  --side-bg-2: #1a2561;           /* mid */
+  --side-bg-3: #151b4f;           /* bottom */
+  --side-border: rgba(255, 255, 255, 0.08);
+  --side-highlight: rgba(255, 255, 255, 0.12);
+  --side-link: #e8efff;           /* link color */
+  --side-link-dim: #c7d3ff;       /* muted link */
+  --side-accent: #4f8cff;         /* active accent */
+}
+
+/* Sidebar container */
+.side {
+  position: sticky;               /* stay in view */
+  top: 0;
+  height: 100vh;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* center entire column */
+  gap: 8px;
+  justify-content: center;
+
+  /* Layered gradients + inner strokes for depth */
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(255,255,255,0.06), transparent 40%),
+    linear-gradient(180deg, var(--side-bg-1), var(--side-bg-2) 40%, var(--side-bg-3));
+  border-right: 1px solid var(--side-border);
+  box-shadow: inset 0 1px 0 var(--side-highlight), inset 0 -1px 0 rgba(0,0,0,0.25);
+}
+
+/* Top highlight strip to add volume */
+.side::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 90px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.16), transparent 70%);
+}
+
+/* Brand (text only, centered) */
+.side .brand {
+  display: block;
+  width: 100%;
+  /* center brand text */
+  text-align: center;             
+  font-size: 22px;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--side-link);
+  letter-spacing: .2px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  /* compact top spacing */
+  margin: 6px 0 20px; 
+  margin-top: 0;            
+}
+.side .brand:hover { filter: brightness(1.06); }
+
+/* Nav list reset (centered) */
+.side ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+    /* center list content */
+  text-align: center;   
+  margin-top: 8px;         
+}
+.side li { margin: 6px 0; }
+
+/* Base link (inline-block so it can be centered as a pill) */
+.side .navlink {
+   /* shrink to content width */
+  display: inline-block;         
+  position: relative;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--side-link-dim);
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, transform .05s ease;
+}
+
+/* Hover */
+.side .navlink:hover {
+  color: var(--side-link);
+  /* glassy mist */
+  background: rgba(255,255,255,0.08); 
+
+}
+
+/* Active (capsule + top accent for centered layout) */
+.side .navlink.active {
+  color: #fff;
+  background: rgba(255,255,255,0.16);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+/* Replace the old left bar with a centered top accent */
+.side .navlink.active::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -6px;
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9ec1ff, var(--side-accent));
+  box-shadow: 0 0 8px rgba(79,140,255,.6);
+}
+
+
+
+/* Small screens */
+@media (max-width: 900px) {
+  .side { padding: 16px; }
+  .side .brand { font-size: 20px; }
+}
+
+
+/* If the sidebar becomes taller than the viewport,
+   fall back to top alignment to keep it usable. */
+@media (max-height: 620px) {
+  .side { justify-content: flex-start; }
+}
+

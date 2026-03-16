@@ -1,0 +1,21 @@
+.bm-text { margin: 6px 0 18px; line-height: 1.6; }
+
+.bm-actions {
+  display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px;
+}
+
+.bm-btn-primary,
+.bm-btn-secondary {
+  height: 40px; padding: 0 16px; border-radius: 10px; border: 1px solid transparent;
+  cursor: pointer; font-weight: 600;
+}
+
+.bm-btn-primary {
+  background: linear-gradient(180deg, #5b8cff, #3b6ef5);
+  color: #fff; border-color: #3b6ef5;
+}
+
+.bm-btn-secondary {
+  background: #f3f4f6; color: #111827; border-color: #e5e7eb;
+}
+.bm-btn-secondary:hover { background: #eaecef; }
